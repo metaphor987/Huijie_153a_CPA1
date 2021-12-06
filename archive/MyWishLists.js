@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect, useContext} from 'react';
+import {ValueContext} from './ValueContext';
+
 import { Button, StyleSheet, Text, TextInput, View, Image, FlatList } from "react-native";
-import {useValue} from './ValueContext';
 
 const MyComments = () => {
 
@@ -8,7 +9,7 @@ const MyComments = () => {
   const [result,setResult] = useState('waiting');
   const [answer, setAnswer] = useState('');
   const [date, setDate] = useState('');
-  const {currentValue} = useValue();
+  const {name} = useContext(ValueContext);
 
   let responseView = (<View></View>)
   if (result=="waiting") {
@@ -52,7 +53,7 @@ const MyComments = () => {
             />
         </View>
         <View style={{flex:2, alignItems:'center', justifyContent:'center'}}>
-          <Text style={styles.headerWord}> Wish List by {currentValue.name}</Text>
+          <Text style={styles.headerWord}> Wish List by {name}</Text>
         </View>
         <View style={{flex:2.5}}></View>
       </View>

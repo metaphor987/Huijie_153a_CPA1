@@ -1,27 +1,23 @@
-import * as React from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import { StyleSheet, Text, View, Button, Image } from 'react-native';
-
-import MyCommentsScreen from './MyComments'
-import LoginScreen from './LoginPage'
-import WishListScreen from './MyWishLists'
-import {useValue} from './ValueContext';
+import {ValueContext} from './ValueContext';
 
 
 const HomeScreen = () => {
-  const {currentValue} = useValue();
+  const {name} = useContext(ValueContext);
 
   return (
     <View style={styles.container}>
       <View style={{flex:2}}>
         <Image
           style={styles.myimage}
-          source={require('./ocean_homepage.jpg')}
+          source={require('./readingGIF.gif')}
           />
       </View>
       <View style={{flex:1}}>
         <View style={{alignItems:'center', justifyContent:'center', padding:30}}>
-          <Text>Hi, {currentValue.name}</Text>
-          <Text>Write down your thoughts and ideas!</Text>
+          <Text style={{fontSize:18}}>Hi, {name}</Text>
+          <Text style={{fontSize:18}}>Write down your thoughts and ideas!</Text>
         </View>
       </View>
     </View>

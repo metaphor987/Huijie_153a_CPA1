@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import {StyleSheet, Text, Image, View, TextInput, Button} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useValue} from './ValueContext';
 
 const TestPage = () => {
 
-  const [name, setName] = useState("")
+  const {changeInfo} = useContext(ValueContext);
+  const {name} = useContext(ValueContext);
 
   const save = async() => {
     try{
@@ -64,12 +66,8 @@ const TestPage = () => {
 
         <View style={{flex:2, padding: 15, justifyContent:'center', alignItems:'center'}}>
           <Text style={{fontSize:20, backgroundColor:'lightpink'}}>What is your name?</Text>
-          <TextInput
-            style={{fontSize:20}}
-            placeholder='Enter here!'
-            onChangeText={(text)=>setName(text)}
-          />
         </View>
+        {changeInfo}
 
         <View style={{flex:1, alignItems:'center', justifyContent:'center'}}>
           <Button

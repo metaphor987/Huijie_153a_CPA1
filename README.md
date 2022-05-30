@@ -1,5 +1,3 @@
-test rename version 2
-
 # ReadingApp
 
 Description:
